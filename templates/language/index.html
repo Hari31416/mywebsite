@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 {% extends "language/base.html" %}
 {% block title_block %}
-<title>Result</title>
+<title>Language Detector</title>
 {% endblock %}
 {% block body_block %}
 <div class="container">
     <div class="row">
         <p class="text-center"><b>Copy and paste (or type) text in below text area to find out which language it most
                 likely belongs to. <br>
-                For better result, use somewhat longer text!</b> </p>
+                For better result, use somewhat longer texts!</b> </p>
     </div>
     <div class="row">
         <div class="col-md-6 offset-md-3 col-8 offset-2 text-center">
-            <h3>
+            <h4>
                 Type the text here!
-            </h3>
+            </h4>
 
             <form action="{% url 'language:index' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <textarea name="text" id="text" cols="40" rows="5" placeholder="{{ text }}"></textarea>
+                    <textarea class="form-control" name="text" id="text" cols="30" rows="5"
+                        placeholder="{{ text }}"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
             <div class="result pt-3">
                 {% if not error %}
