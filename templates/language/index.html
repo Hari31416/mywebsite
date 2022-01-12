@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends "language/base.html" %}
+{% block title_block %}
+<title>Result</title>
+{% endblock %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <p class="text-center"><b>Copy and paste (or type) text in below text area to find out which language it most
+                likely belongs to. <br>
+                For better result, use somewhat longer text!</b> </p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-8 offset-2 text-center">
+            <h3>
+                Type the text here!
+            </h3>
+
+            <form action="{% url 'language:index' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea name="text" id="text" cols="40" rows="5" placeholder="{{ text }}"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div class="result pt-3">
+                {% if not error %}
+                <h4> Most Likely Language Is:</h4>
+                <h3 class="text-success">
+                    {{ language }}
+                </h3>
+
+                <h4>All The Possible Languages are:</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Language</th>
+                            <th>Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for language, probability in languages %}
+                        <tr>
+                            <td>{{ language }}</td>
+                            <td>{{ probability }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <h5>No text is entered!</h5>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

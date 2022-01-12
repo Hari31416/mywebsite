@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "language/base.html" %}
+{% block title_block %}
+<title>Result</title>
+{% endblock %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 col-8 offset-2">
+            <h3>
+                Type the text here!
+            </h3>
+
+            <form action="{% url 'language:result' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea name="text" id="text" cols="30" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <h4>Language is:</h4>
+            <p>
+                {{ insert_me }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
