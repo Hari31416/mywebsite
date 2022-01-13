@@ -214,11 +214,13 @@ class Text(models.Model):
     def __str__(self):
         return self.text
 
-    def get_language(self):
-        try:
-            return language_short_name[detect(self.text)]
-        except:
-            return "No Language Found"
+    # def get_language(self):
+    #     try:
+    #         error = False
+    #         return language_short_name[detect(self.text)], error
+    #     except:
+    #         error = True
+    #         return "No Language Found", error
 
     def get_all_languages(self):
         all_langs_dict = []
@@ -228,6 +230,6 @@ class Text(models.Model):
                 language = language_short_name[lang.lang]
                 probability = round(lang.prob * 100, 0)
                 all_langs_dict.append((language, probability))
-        except error as e:
-            print(e)
+        except:
+            pass
         return all_langs_dict

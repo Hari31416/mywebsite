@@ -8,13 +8,15 @@ from language.models import Text
 def index(request):
     no_text = False
     text = ""
+    error = False
     try:
         text = request.POST["text"]
     except:
         no_text = True
 
-    if text == "":
+    if text.strip() == "":
         no_text = True
+
     if no_text:
         text = "Please enter some text."
         language = "No text entered yet!"
@@ -29,9 +31,14 @@ def index(request):
         return render(request, "language/index.html", my_dict)
     else:
         t = Text(text=text)
-        language = t.get_language()
-        languages = t.get_all_languages()
-        error = False
+
+        try:
+            languages = t.get_all_languages()
+            language = languages[0][0]
+        except IndexError:
+            language = "No language found!"
+            languages = [("No language found!", 100)]
+
         my_dict = {
             "language": language,
             "text": text,
@@ -39,8 +46,3 @@ def index(request):
             "error": error,
         }
         return render(request, "language/index.html", my_dict)
-
-
-def help(request):
-    my_dict = {"insert_me": "Hello! What can I do for you?"}
-    return render(request, "language/help.html", my_dict)

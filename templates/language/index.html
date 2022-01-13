@@ -6,7 +6,7 @@
 {% block body_block %}
 <div class="container">
     <div class="row">
-        <p class="text-center"><b>Copy and paste (or type) text in below text area to find out which language it most
+        <p class="text-center"><b>Paste (or type) text in below text area to find out which language it most
                 likely belongs to. <br>
                 For better result, use somewhat longer texts!</b> </p>
     </div>
@@ -26,7 +26,13 @@
             </form>
             <div class="result pt-3">
                 {% if not error %}
-                <h4> Most Likely Language Is:</h4>
+                {% if language == 'No language found!' %}
+                <h4 class="text-danger">
+                    {{ language }}
+                </h4>
+                <h6>Consider using longer text.</h6>
+                {% else %}
+                <h4>The Most Likely Language Is:</h4>
                 <h3 class="text-success">
                     {{ language }}
                 </h3>
@@ -48,8 +54,9 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                {% endif %}
                 {% else %}
-                <h5>No text is entered!</h5>
+                <h4 class="text-danger">No text is entered yet!</h4>
                 {% endif %}
             </div>
         </div>
