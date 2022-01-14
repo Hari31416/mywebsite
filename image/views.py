@@ -1,8 +1,6 @@
-import re
 from django.shortcuts import render
 from .models import ImageFile
 from django.utils import timezone
-import re
 
 
 def index(request):
