@@ -26,8 +26,11 @@ SECRET_KEY = "django-insecure-=u#u^#(r-mebpon=2gztystb9+c-!v(bb((5^^op9_4mw+@!on
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "http://127.0.0.1:8000/",
+    "localhost",
+]
+# DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # Application definition
 
@@ -39,6 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "language",
+    "image",
+    "django_cleanup.apps.CleanupConfig",
+    "django_unused_media",
 ]
 
 MIDDLEWARE = [
@@ -123,6 +129,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

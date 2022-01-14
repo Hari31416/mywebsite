@@ -1,0 +1,157 @@
+{% extends "language/base.html" %}
+{% load static %}
+{% block title_block %}
+<title>Image Tools</title>
+{% endblock %}
+{% block body_block %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-10 offset-1">
+        <h1 id="heading">Image Tools</h1>
+        {% if not saved %}
+        <h4 class="mb-4">Start by uploading the image.</h4>
+        <form action="{% url 'image:index' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <p>
+                    <label for="img_file">Upload Image</label>
+                    <input type="file" name="img_file" class="form-control-file" id="img_file" accept="image/*"
+                        required="">
+                </p>
+                <input type="submit" value="Upload" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+{% if error_message %}
+<div class="row">
+    <div class="alert alert-danger col-md-8 offset-md-2 col-10 offset-1 mt-2">
+        <strong>Sorry!</strong> {{ error_message }}
+    </div>
+    {% else %}
+
+    {% endif %}
+    {% else %}
+    <div class="row">
+        <div class="alert alert-success col-md-8 offset-md-2 col-10 offset-1">
+            <strong>Success!</strong> Image uploaded successfully.
+        </div>
+        <div class="col-md-8 offset-md-2 col-10 offset-1">
+            Some details about the image are:
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for property, detail in details.items %}
+                    <tr>
+                        <td><b>{{ property }}</b></td>
+                        <td>{{ detail }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-8 offset-md-2 col-10 offset-1">
+            <div class="lead">Thumbnail of the Image</div>
+            <img class="img img-fluid" src="{{ thumb_img }}" alt="No Image">
+        </div>
+    </div>
+    <div class="row">
+        <h3>What do you want to do next?</h3>
+    </div>
+    <!-- IMAGE RESIZER -->
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-10 offset-1">
+            <button id="resize" class="btn btn-info m-3 p-2">Change Image Size</button>
+            <div id="resizeForm" class="row d-none">
+                <div class="col-12">
+                    <p class="lead">Enter the File Size in Kb</p>
+                </div>
+                <form class="row needs-validation" action="{% url 'image:resize' %}" method="post" target="_blank"
+                    novalidate>
+                    {% csrf_token %}
+                    <div class="col-6">
+                        <input type="number" name="size" class="form-control" placeholder="100 Kb" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a valid size. (e.g. 100 Kb)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="pk" class="form-control" value="{{ pk }}">
+                    </div>
+                    <input class="btn btn-primary m-2 p-2" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- IMAGE RESHAPE -->
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-10 offset-1">
+            <button id="reshape" class="btn btn-info m-3 p-2">Reshape Image</button>
+            <div id="reshapeForm" class="row d-none">
+                <div class="col-12">
+                    <p class="lead">Enter Height and Width</p>
+                </div>
+                <form class="row needs-validation" action="{% url 'image:reshape' %}" method="post" target="_blank"
+                    novalidate>
+                    {% csrf_token %}
+                    <div class="col-6">
+                        <input type="number" name="h" class="form-control" placeholder="Height" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please give the height in pixels.(Use integers!)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input type="number" name="w" class="form-control" placeholder="Width" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please give the width in pixels.(Use integers!)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="pk" class="form-control" value="{{ pk }}">
+                    </div>
+                    <input class="btn btn-primary m-2 p-2" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- IMAGE CONVERT -->
+    <div class="row">
+        <div class="col-md-8 offset-md-2 col-10 offset-1">
+            <button id="reformat" class="btn btn-info m-3 p-2">Change Image Format</button>
+            <div id="reformatForm" class="row d-none">
+                <div class="col-12">
+                    <p class="lead">Current File Format is: {{ format }}.</p>
+                    {% if format == 'JPEG' %}
+                    <p class="lead">Clicking on submit button will then convert the file to PNG.</p>
+                    {% else %}
+                    <p class="lead">Clicking on submit button will then convert the file to JPEG.</p>
+                    {% endif %}
+                </div>
+                <form class="row" action="{% url 'image:reformat' %}" method="post" target="_blank" novalidate>
+                    {% csrf_token %}
+                    <div class="col-6">
+                        <input type="hidden" name="pk" class="form-control" value="{{ pk }}">
+                    </div>
+                    <input class="btn btn-primary m-2 p-2" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+    {% block js_block %}
+    <script src="{% static 'js/image.js' %}"></script>
+    {% endblock %}
