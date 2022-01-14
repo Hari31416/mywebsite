@@ -2,3 +2,6 @@ django
 django-heroku
 langdetect
 gunicorn
+pillow
+django-cleanup
+django-unused-media

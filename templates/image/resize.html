@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "language/base.html" %}
+{% load static %}
+{% block title_block %}
+<title>Reshape Image</title>
+{% endblock %}
+{% block body_block %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 offset-1 col-10 g-md-3">
+        {% if error %}
+        <h3 class="my-3 alert alert-danger">Sorry!</h3>
+        {% for text in err_text %}
+        <p class="my-3 alert alert-danger">{{ text }}</p>
+        {% endfor %}
+        <h6 class="lead">Meanwhile, you can download this image with
+            <span class="text-success"><b>{{ reached_size }}Kb</b></span> of size. Click on the image or on the download
+            button below to download.
+        </h6>
+        {% else %}
+        <h3 class="my-3 alert alert-success ">Great! Here is your resized file!</h3>
+        <h6 class="lead">The size is <span class="text-success"><b>{{ reached_size }}Kb.</b></span> Click on the image
+            to download.</h6>
+        {% endif %}
+        <a href="{{ file_dir }}" target="blank"><img class="my-3 img img-fluid d-block" src="{{ file_dir }}"
+                alt="No Image"></a>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6 offset-md-3 offset-2 col-8 g-md-3 mt-2">
+            <a href="{% url 'image:resize' %}" target="blank" class="btn btn-success">Resize Another
+                Image</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
