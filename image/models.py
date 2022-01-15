@@ -137,6 +137,7 @@ class ImageFile(models.Model):
         resized_img = os.path.join("media", "images", "resize")
         resize_image = os.path.join(resized_img, self.get_img_name())
         resize_image = f"{resize_image}.jpg"
+        resize_image = resize_image.replace("\\", "/")
         iter = 1
         print(f"{iter} iteration")
 
