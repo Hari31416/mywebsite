@@ -130,10 +130,8 @@ class ImageFile(models.Model):
         # Original image directory
         if file_path is None:
             file = self.change_path_format()
-            original_file = self.img_file.url
         else:
-            file = file_path
-            original_file = file
+            file = self.img_file.url.strip("/")
 
         # Resized image directory
         resized_img = os.path.join("media", "images", "resize")
