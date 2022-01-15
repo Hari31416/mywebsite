@@ -129,9 +129,9 @@ class ImageFile(models.Model):
         FINAL_SIZE = size
         # Original image directory
         if file_path is None:
-            file = self.change_path_format()
-        else:
             file = self.img_file.url.strip("/")
+        else:
+            file = file_path
 
         # Resized image directory
         resized_img = os.path.join("media", "images", "resize")
@@ -142,6 +142,7 @@ class ImageFile(models.Model):
 
         # Original image size
         original_size = os.path.getsize(file) / 1024
+        print("FINF FILE HERE")
         print(file)
         print(f"Original size: {original_size} KB")
         # Setting the image quality based on the ratio of the original image size
