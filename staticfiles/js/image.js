@@ -6,17 +6,29 @@ const reformatBtn = document.getElementById("reformat");
 const reshapeForm = document.getElementById("reshapeForm");
 const resizeForm = document.getElementById("resizeForm");
 const reformatForm = document.getElementById("reformatForm");
-
+console.log(":: image.js");
 reshapeBtn.addEventListener("click", function () {
-  reshapeForm.classList.remove("d-none");
+  // console.log("reshape");
+  reshapeForm.classList.toggle("d-none");
+  console.log("reshapeForm.classList.toggle(d-none)");
+  // resizeForm.classList.add("d-none");
+  // reformatForm.classList.add("d-none");
 });
 
 resizeBtn.addEventListener("click", function () {
-  resizeForm.classList.remove("d-none");
+  // console.log("resize");
+  resizeForm.classList.toggle("d-none");
+  console.log("resizeForm.classList.toggle(d-none)");
+  // reshapeForm.classList.add("d-none");
+  // reformatForm.classList.add("d-none");
 });
 
 reformatBtn.addEventListener("click", function () {
-  reformatForm.classList.remove("d-none");
+  // console.log("reformat");
+  reformatForm.classList.toggle("d-none");
+  console.log("reformatForm.classList.toggle(d-none)");
+  // reshapeForm.classList.add("d-none");
+  // resizeForm.classList.add("d-none");
 });
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields

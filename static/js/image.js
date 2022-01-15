@@ -1,5 +1,4 @@
 "use strict";
-
 const resizeBtn = document.getElementById("resize");
 const reshapeBtn = document.getElementById("reshape");
 const reformatBtn = document.getElementById("reformat");
@@ -8,15 +7,15 @@ const resizeForm = document.getElementById("resizeForm");
 const reformatForm = document.getElementById("reformatForm");
 
 reshapeBtn.addEventListener("click", function () {
-  reshapeForm.classList.remove("d-none");
+  reshapeForm.classList.toggle("d-none");
 });
 
 resizeBtn.addEventListener("click", function () {
-  resizeForm.classList.remove("d-none");
+  resizeForm.classList.toggle("d-none");
 });
 
 reformatBtn.addEventListener("click", function () {
-  reformatForm.classList.remove("d-none");
+  reformatForm.classList.toggle("d-none");
 });
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields

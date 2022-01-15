@@ -27,7 +27,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 SECRET_KEY = "django-insecure-=u#u^#(r-mebpon=2gztystb9+c-!v(bb((5^^op9_4mw+@!on"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 # DEBUG_PROPAGATE_EXCEPTIONS = True
@@ -45,17 +45,8 @@ INSTALLED_APPS = [
     "image",
     "django_cleanup.apps.CleanupConfig",
     "django_unused_media",
-    # "cloudinary",
-    # "cloudinary_storage",
 ]
 
-# CLOUDINARY_STORAGE = {
-#     "CLOUD_NAME": "dimmmylex",
-#     "API_KEY": "395664942538496",
-#     "API_SECRET": "oiU1Wr9D6P1eqzIbQmqTXxvgSsA",
-# }
-
-# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

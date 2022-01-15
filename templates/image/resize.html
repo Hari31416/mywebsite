@@ -2,7 +2,7 @@
 {% extends "language/base.html" %}
 {% load static %}
 {% block title_block %}
-<title>Reshape Image</title>
+<title>Compressed Image</title>
 {% endblock %}
 {% block body_block %}
 
@@ -13,15 +13,16 @@
         {% for text in err_text %}
         <p class="my-3 alert alert-danger">{{ text }}</p>
         {% endfor %}
-        <h6 class="lead">Meanwhile, you can download this image with
+        <h6 class="lead">Meanwhile, you can download this compressed (hopefully) image with
             <span class="text-success"><b>{{ reached_size }}Kb</b></span> of size. Click on the image or on the download
             button below to download.
         </h6>
         {% else %}
-        <h3 class="my-3 alert alert-success ">Great! Here is your resized file!</h3>
+        <h3 class="my-3 alert alert-success ">Great! Here is your compressed file!</h3>
         <h6 class="lead">The size is <span class="text-success"><b>{{ reached_size }}Kb.</b></span> Click on the image
             to download.</h6>
         {% endif %}
+        <p class="text-mute">You might need to right click and select 'save as' option.</p>
         <a href="{{ file_dir }}" target="blank"><img class="my-3 img img-fluid d-block" src="{{ file_dir }}"
                 alt="No Image"></a>
     </div>
@@ -30,7 +31,7 @@
 <div class="container">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6 offset-md-3 offset-2 col-8 g-md-3 mt-2">
-            <a href="{% url 'image:resize' %}" target="blank" class="btn btn-success">Resize Another
+            <a href="{% url 'image:resize' %}" class="btn btn-success">Resize Another
                 Image</a>
         </div>
     </div>

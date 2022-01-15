@@ -8,6 +8,11 @@
     <div class="col-md-8 offset-md-2 col-10 offset-1">
         <h1 id="heading">Image Tools</h1>
         {% if not saved %}
+        <p>The app provides basic functions related to images eg. compressing, reshaping and changing formats. For now,
+            only
+            JPEG
+            and PNG are supported. Also, while compressing PNG images, they are converted into JPEG.
+        </p>
         <h4 class="mb-4">Start by uploading the image.</h4>
         <form action="{% url 'image:index' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -17,9 +22,10 @@
                     <input type="file" name="img_file" class="form-control-file" id="img_file" accept="image/*"
                         required="">
                 </p>
-                <input type="submit" value="Upload" class="btn btn-primary">
+                <input id="upload-btn" type="submit" value="Upload" class="btn btn-primary">
             </div>
         </form>
+        <p id="upload-message" class="d-none">Uploading...</p>
     </div>
 </div>
 {% if error_message %}
@@ -65,8 +71,16 @@
     <!-- IMAGE RESIZER -->
     <div class="row">
         <div class="col-md-8 offset-md-2 col-10 offset-1">
-            <button id="resize" class="btn btn-info m-3 p-2">Change Image Size</button>
+            <button id="resize" class="btn btn-info m-3 p-2">Compress Image Size</button>
             <div id="resizeForm" class="row d-none">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Attention!</strong> There are some problems while resizing PNG images. Also, type about 10
+                    KB less than the image size you want.
+                    <button type="button" class="close btn-lg btn-warning p-0 bg-transparent border-0"
+                        data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="col-12">
                     <p class="lead">Enter the File Size in Kb</p>
                 </div>
@@ -74,7 +88,7 @@
                     novalidate>
                     {% csrf_token %}
                     <div class="col-6">
-                        <input type="number" name="size" class="form-control" placeholder="100 Kb" required>
+                        <input type="number" name="size" class="form-control" placeholder="100 KB" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -133,11 +147,13 @@
             <button id="reformat" class="btn btn-info m-3 p-2">Change Image Format</button>
             <div id="reformatForm" class="row d-none">
                 <div class="col-12">
-                    <p class="lead">Current File Format is: {{ format }}.</p>
+                    <p class="lead">Current File Format is: <span class="text-success"><b>{{ format }}</b></span>.</p>
                     {% if format == 'JPEG' %}
-                    <p class="lead">Clicking on submit button will then convert the file to PNG.</p>
+                    <p class="lead">Clicking on submit button will then convert the file to <span
+                            class="text-danger"><b>PNG</b></span>.</p>
                     {% else %}
-                    <p class="lead">Clicking on submit button will then convert the file to JPEG.</p>
+                    <p class="lead">Clicking on submit button will then convert the file to <span
+                            class="text-danger"><b>JPEG</b></span>.</p>
                     {% endif %}
                 </div>
                 <form class="row" action="{% url 'image:reformat' %}" method="post" target="_blank" novalidate>
@@ -147,6 +163,14 @@
                     </div>
                     <input class="btn btn-primary m-2 p-2" type="submit" value="Submit">
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-6 offset-md-3 offset-2 col-8 g-md-3 mt-2">
+
+                <a href="{% url 'image:index' %}" class="btn btn-success">Try Another</a>
             </div>
         </div>
     </div>
