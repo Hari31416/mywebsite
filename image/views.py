@@ -7,9 +7,7 @@ def index(request):
     saved = False
     if request.method == "POST":
         img_file = request.FILES["img_file"]
-        i = ImageFile(
-            img_file=img_file, img_name=img_file.name, img_date=timezone.now()
-        )
+        i = ImageFile(img_file=img_file, img_date=timezone.now())
         valid, error_message = i.validate()
 
         if valid:

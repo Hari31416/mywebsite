@@ -5,7 +5,6 @@ import os
 # Create your models here.
 class ImageFile(models.Model):
     img_file = models.ImageField(upload_to="images")
-    img_name = models.CharField(max_length=100)
     img_date = models.DateTimeField(auto_now_add=True)
     formats = {
         "jpg": "JPEG",
@@ -50,7 +49,7 @@ class ImageFile(models.Model):
         return valid, error_message
 
     def __str__(self):
-        return self.img_name
+        return self.img_file.name
 
     def get_image_details(self):
         """
