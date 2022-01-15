@@ -45,8 +45,17 @@ INSTALLED_APPS = [
     "image",
     "django_cleanup.apps.CleanupConfig",
     "django_unused_media",
+    # "cloudinary",
+    # "cloudinary_storage",
 ]
 
+# CLOUDINARY_STORAGE = {
+#     "CLOUD_NAME": "dimmmylex",
+#     "API_KEY": "395664942538496",
+#     "API_SECRET": "oiU1Wr9D6P1eqzIbQmqTXxvgSsA",
+# }
+
+# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

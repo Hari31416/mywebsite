@@ -61,7 +61,7 @@ class ImageFile(models.Model):
         format = self.formats[self.img_file.name.split(".")[-1]]
         size = round(self.img_file.size / (1024), 2)
         try:
-            dpi = int(img.info["dpi"][0])
+            dpi = img.info["dpi"][0]
         except KeyError:
             dpi = "Not available"
         return {
@@ -134,8 +134,7 @@ class ImageFile(models.Model):
         else:
             file = file_path
             original_file = file
-        print("HERE")
-        print(original_file)
+
         # Resized image directory
         resized_img = os.path.join("media", "images", "resize")
         resize_image = os.path.join(resized_img, self.get_img_name())
@@ -150,10 +149,7 @@ class ImageFile(models.Model):
         # Setting the image quality based on the ratio of the original image size
         # and the desired size
         fold = original_size / FINAL_SIZE
-
-        quality = int(100 / fold) - 5
-        if quality < 5:
-            quality = int(100 / fold)
+        quality = int(100 / fold)
 
         # Resizing the image
         o_img = Image.open(file)
@@ -162,13 +158,6 @@ class ImageFile(models.Model):
         current_size = os.path.getsize(resize_image) / 1024
         print(f"{FINAL_SIZE} KB -> {current_size} KB")
 
-        if FINAL_SIZE > current_size and original_file.endswith("png"):
-            resized_img = os.path.join("media", "images")
-            resize_image = os.path.join(resized_img, self.get_img_name())
-            resize_image = f"{resize_image}.png"
-            result = (original_file.replace("\\", "/"), error, round(original_size, 2))
-            print("Returning Original Image")
-            return result
         # Defining the prevoius size to be used in while loop
         previous_size = current_size
 
@@ -186,8 +175,7 @@ class ImageFile(models.Model):
             # Checking if the image size is decreasing or not
             difference = previous_size - current_size
             if difference < 1:
-                error += "Image size is not decreasing any further.\n"
-                error += f"Try reshaping the image first."
+                error += "Image size is not decreasing. Because the quality of the image has reached very low.\n"
                 print(f"{FINAL_SIZE} KB -> {current_size} KB")
                 print("No more difference")
                 break
