@@ -61,7 +61,7 @@ class ImageFile(models.Model):
         format = self.formats[self.img_file.name.split(".")[-1]]
         size = round(self.img_file.size / (1024), 2)
         try:
-            dpi = img.info["dpi"][0]
+            dpi = int(img.info["dpi"][0])
         except KeyError:
             dpi = "Not available"
         return {
@@ -101,7 +101,7 @@ class ImageFile(models.Model):
         img_name = self.get_img_name()
         converted_img = os.path.join("media", "images", "converted", img_name)
         file_path = f"{converted_img}.png"
-        jpg.save(file_path, "PNG")
+        jpg.save(file_path)
         return file_path.replace("\\", "/")
 
     def png_to_jpg(self):
@@ -112,7 +112,7 @@ class ImageFile(models.Model):
         background.paste(png, mask=png.split()[3])  # 3 is the alpha channel
         converted_img = os.path.join("media", "images", "converted", img_name)
         file_path = f"{converted_img}.jpg"
-        background.save(file_path, "JPEG")
+        background.save(file_path)
         return file_path.replace("\\", "/")
 
     def resize_png_image(self, size):
