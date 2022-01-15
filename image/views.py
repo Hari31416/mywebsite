@@ -16,6 +16,7 @@ def index(request):
             saved = True
             i.save()
             img_url = i.img_file.url
+            print(img_url)
             thumb_img = "/" + i.get_thumbnail(200)
             details = i.get_image_details()
             pk = i.pk

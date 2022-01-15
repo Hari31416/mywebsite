@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 import django_heroku
 
+# import cloudinary
+# import cloudinary_storage
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
@@ -42,11 +45,22 @@ INSTALLED_APPS = [
     "image",
     "django_cleanup.apps.CleanupConfig",
     "django_unused_media",
+    # "cloudinary",
+    # "cloudinary_storage",
 ]
+
+# CLOUDINARY_STORAGE = {
+#     "CLOUD_NAME": "dimmmylex",
+#     "API_KEY": "395664942538496",
+#     "API_SECRET": "oiU1Wr9D6P1eqzIbQmqTXxvgSsA",
+# }
+
+# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",

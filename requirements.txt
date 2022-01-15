@@ -5,3 +5,6 @@ gunicorn
 pillow
 django-cleanup
 django-unused-media
+cloudinary 
+django-cloudinary-storage
+whitenoise
