@@ -14,7 +14,7 @@ def index(request):
             saved = True
             i.save()
             img_url = i.img_file.url
-            print(img_url)
+            # print(img_url)
             # thumb_img = "/" + i.get_thumbnail(200)
             details = i.get_image_details()
             pk = i.pk
@@ -43,7 +43,7 @@ def index(request):
 
 def reshape(request):
     if request.method == "POST":
-        print(request.POST)
+        # print(request.POST)
         width = int(request.POST["w"])
         height = int(request.POST["h"])
         pk = int(request.POST["pk"])
@@ -61,7 +61,7 @@ def reshape(request):
 
 def resize(request):
     if request.method == "POST":
-        print(request.POST)
+        # print(request.POST)
         size = int(request.POST["size"])
         pk = int(request.POST["pk"])
         image = ImageFile.objects.get(pk=pk)

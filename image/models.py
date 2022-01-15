@@ -117,7 +117,7 @@ class ImageFile(models.Model):
 
     def resize_png_image(self, size):
         img = self.png_to_jpg()
-        print(f"IMAGE: {img}")
+        # print(f"IMAGE: {img}")
         return self.resize_jpg_image(size=size, file_path=img)
 
     def resize_jpg_image(self, size, file_path=None):
@@ -139,13 +139,9 @@ class ImageFile(models.Model):
         resize_image = f"{resize_image}.jpg"
         resize_image = resize_image.replace("\\", "/")
         iter = 1
-        print(f"{iter} iteration")
 
         # Original image size
         original_size = os.path.getsize(file) / 1024
-        print("FINF FILE HERE")
-        print(file)
-        print(f"Original size: {original_size} KB")
         # Setting the image quality based on the ratio of the original image size
         # and the desired size
         fold = original_size / FINAL_SIZE
@@ -154,9 +150,7 @@ class ImageFile(models.Model):
         # Resizing the image
         o_img = Image.open(file)
         o_img.save(resize_image, quality=quality)
-        print(resize_image)
         current_size = os.path.getsize(resize_image) / 1024
-        print(f"{FINAL_SIZE} KB -> {current_size} KB")
 
         # Defining the prevoius size to be used in while loop
         previous_size = current_size
@@ -164,7 +158,7 @@ class ImageFile(models.Model):
         # Starting the loop and keep running till the desired size is reached
         while current_size > FINAL_SIZE:
             iter += 1
-            print(f"{iter} iteration")
+            # print(f"{iter} iteration")
 
             # reducing the quality of the image
             quality = quality - 2
@@ -176,15 +170,15 @@ class ImageFile(models.Model):
             difference = previous_size - current_size
             if difference < 1:
                 error += "Image size is not decreasing. Because the quality of the image has reached very low.\n"
-                print(f"{FINAL_SIZE} KB -> {current_size} KB")
-                print("No more difference")
+                # print(f"{FINAL_SIZE} KB -> {current_size} KB")
+                # print("No more difference")
                 break
 
             previous_size = current_size
 
             if current_size <= FINAL_SIZE:
-                print(f"{FINAL_SIZE} KB -> {current_size} KB")
-                print("Done!")
+                # print(f"{FINAL_SIZE} KB -> {current_size} KB")
+                # print("Done!")
                 break
 
             # making sure that the quality is at least 5
@@ -193,12 +187,12 @@ class ImageFile(models.Model):
                     "Quality has reached very low value (less than 5%). Aborting!\n"
                 )
                 error += "You should consider reshaping the image first."
-                print(f"{FINAL_SIZE} KB -> {current_size} KB")
-                print("Aborting! Quality has reached very low value (less than 5%).")
-                print("You should consider reshaping the image first.")
+                # print(f"{FINAL_SIZE} KB -> {current_size} KB")
+                # print("Aborting! Quality has reached very low value (less than 5%).")
+                # print("You should consider reshaping the image first.")
                 break
 
-            print(f"{FINAL_SIZE} KB -> {current_size} KB")
+            # print(f"{FINAL_SIZE} KB -> {current_size} KB")
         return resize_image.replace("\\", "/"), error, round(current_size, 2)
 
     def resize_image(self, size, file_path=None):
