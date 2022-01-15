@@ -15,7 +15,7 @@ def index(request):
             i.save()
             img_url = i.img_file.url
             print(img_url)
-            thumb_img = "/" + i.get_thumbnail(200)
+            # thumb_img = "/" + i.get_thumbnail(200)
             details = i.get_image_details()
             pk = i.pk
             format = i.get_image_format()
@@ -25,7 +25,7 @@ def index(request):
                 {
                     "saved": saved,
                     "img_url": img_url,
-                    "thumb_img": thumb_img,
+                    # "thumb_img": thumb_img,
                     "details": details,
                     "pk": pk,
                     "format": format,
