@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import YoutubeAudio
 
-
 # Create your views here.
 def index(request):
     link_provided = True
@@ -47,4 +46,11 @@ def download(request):
         id = int(request.POST["id"])
         youtube_file = YoutubeAudio.objects.get(pk=pk)
         path = "/" + youtube_file.download_audio(id)
-    return render(request, "youtube/download.html", {"id": id, "path": path})
+    return render(
+        request,
+        "youtube/download.html",
+        {
+            "id": id,
+            "path": path,
+        },
+    )
