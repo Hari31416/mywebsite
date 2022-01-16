@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}
+<title>Youtube Song Downloader</title>
+{% endblock %}
+{% block body_block %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-10 offset-1">
+        {% if not link_provided %}
+        <h2 class="text-center">Download Songs From Youtube</h2>
+        <form id="uriHtml5Form" class="row needs-validation" action="{% url 'youtube:index' %}" method="POST"
+            novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="url" name="url" class="form-control bg-transparent border" id="url"
+                    placeholder="Enter Youtube URL" required="">
+                <div class="invalid-feedback">
+                    Please enter a valid Youtube URL. (URL should start with http/https.)
+                </div>
+                <input class="mt-3 px-3 btn-lg btn btn-primary" type="submit" value="Start">
+            </div>
+        </form>
+    </div>
+</div>
+{% else %}
+{% if error_text %}
+<div class="row">
+    <div class="alert alert-danger col-md-8 offset-md-2 col-10 offset-1 mt-2 bg-transparent border-0">
+        <h5> <strong>Sorry!</strong> {{ error_text }}</h5>
+    </div>
+    <div class="col-md-2 offset-md-5 col-4 offset-4"><a href="{% url 'youtube:index' %}" class="btn btn-secondary">Try
+            Again!</a></div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-10 offset-1">
+        <div class="alert alert-success col-md-8 offset-md-2 col-10 offset-1 mt-2 bg-transparent border-0">
+            <h3 class="text-center">Great!</h3>
+        </div>
+        <a href="{{ watch_url }}" target="blank"> <img src="{{ thumb_url }}" alt="" class="img img-fluid"></a>
+    </div>
+    <div class="col-md-8 offset-md-2 col-10 offset-1 py-2">
+        <p class="lead">Here are some details about the song:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th class="text-center">Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for property, detail in details.items %}
+                <tr>
+                    <td><b>{{ property.title }}</b></td>
+                    <td>{{ detail }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p class="lead">Following audio files are available to download. Click on the download button corresponding to
+            the audio quality to download.</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Quality</th>
+                    <th>Approx. File Size in MB</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for id, size, quality in audio_details %}
+                <tr>
+                    <td><b>{{ quality}}</b></td>
+                    <td>{{ size }}</td>
+                    <td>
+                        <form action="{% url 'youtube:download' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{ pk }}">
+                            <input type="hidden" name="id" value="{{ id }}">
+                            <input type="submit" class="btn btn-primary" value="Download">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}
+{% block js_block %}
+<script src="{% static 'js/youtube.js' %}"></script>
+{% endblock %}

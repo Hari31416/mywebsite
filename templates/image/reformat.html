@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends "language/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block title_block %}
 <title>Chnage Format</title>
@@ -8,7 +8,8 @@
 
 <div class="row">
     <div class="col-md-6 offset-md-3 offset-1 col-10 g-md-3">
-        <h3 class="my-3 alert alert-success ">Great! Here is your {{ converted_format }} file!</h3>
+        <h3 class="my-3 alert alert-success bg-transparent border-0">Great! Here is your {{ converted_format }} file.
+        </h3>
         <h6 class="lead">Click on the image below to download.</h6>
         <a href="{{ file_dir }}" target="blank"><img class="my-3 img img-fluid d-block" src="{{ file_dir }}"
                 alt="No Image"></a>
@@ -19,7 +20,7 @@
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6 offset-md-3 offset-2 col-8 g-md-3 mt-2">
 
-            <a href="{% url 'image:index' %}" class="btn btn-success"> Another Conversion?</a>
+            <a href="{% url 'image:index' %}" class="btn btn-success"> Try Another</a>
         </div>
     </div>
 </div>

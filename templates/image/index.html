@@ -1,4 +1,4 @@
-{% extends "language/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block title_block %}
 <title>Image Tools</title>
@@ -20,7 +20,7 @@
                 <p>
                     <label for="img_file">Upload Image</label>
                     <input type="file" name="img_file" class="form-control-file" id="img_file" accept="image/*"
-                        required="">
+                        required="" />
                 </p>
                 <input id="upload-btn" type="submit" value="Upload" class="btn btn-primary">
             </div>
@@ -28,21 +28,21 @@
         <p id="upload-message" class="d-none">Uploading...</p>
     </div>
 </div>
-{% if error_message %}
+{% if error_text %}
 <div class="row">
     <div class="alert alert-danger col-md-8 offset-md-2 col-10 offset-1 mt-2">
-        <strong>Sorry!</strong> {{ error_message }}
+        <strong>Sorry!</strong> {{ error_text }}
     </div>
     {% else %}
 
     {% endif %}
     {% else %}
     <div class="row">
-        <div class="alert alert-success col-md-8 offset-md-2 col-10 offset-1">
-            <strong>Success!</strong> Image uploaded successfully.
+        <div class="alert alert-success col-md-8 offset-md-2 col-10 offset-1 bg-transparent border-0">
+            <h5><strong>Great!</strong> Image uploaded successfully.</h5>
         </div>
         <div class="col-md-8 offset-md-2 col-10 offset-1">
-            Some details about the image are:
+            <h6> Some details about the image are:</h6>
             <table class="table">
                 <thead>
                     <tr>
@@ -73,8 +73,8 @@
         <div class="col-md-8 offset-md-2 col-10 offset-1">
             <button id="resize" class="btn btn-info m-3 p-2">Compress Image Size</button>
             <div id="resizeForm" class="row d-none">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Attention!</strong> There are some problems while resizing PNG images. Also, type about 10
+                <div class="alert alert-warning alert-dismissible fade show bg-transparent border-0" role="alert">
+                    <strong>Attention!</strong> There are some problems while resizing PNG images. Also, enter about 10
                     KB less than the image size you want.
                     <button type="button" class="close btn-lg btn-warning p-0 bg-transparent border-0"
                         data-dismiss="alert" aria-label="Close">
@@ -88,7 +88,8 @@
                     novalidate>
                     {% csrf_token %}
                     <div class="col-6">
-                        <input type="number" name="size" class="form-control" placeholder="100 KB" required>
+                        <input type="number" name="size" class="form-contro bg-transparent border" placeholder="100 KB"
+                            required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -116,7 +117,8 @@
                     novalidate>
                     {% csrf_token %}
                     <div class="col-6">
-                        <input type="number" name="h" class="form-control" placeholder="Height" required>
+                        <input type="number" name="h" class="form-control bg-transparent border" placeholder="Height"
+                            required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -125,7 +127,8 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <input type="number" name="w" class="form-control" placeholder="Width" required>
+                        <input type="number" name="w" class="form-control bg-transparent border" placeholder="Width"
+                            required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>

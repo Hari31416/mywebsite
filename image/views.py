@@ -70,7 +70,6 @@ def resize(request):
             error = False
         else:
             error = True
-        err_text = err_text.split("\n")
         file_dir = "/" + file_dir
         thumb_dir = "/" + image.get_thumbnail(200)
         return render(

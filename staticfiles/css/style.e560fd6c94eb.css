@@ -1,0 +1,14 @@
+body {
+  background: url("/static/images/bg2.f500125cd6bd.jpg");
+  background-size: 100% auto;
+  background-repeat: round;
+  background-attachment: fixed;
+}
+
+.border {
+  border-width: 3px !important;
+}
+
+#link {
+  text-decoration: none;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}
+<title>Download</title>
+{% endblock %}
+{% block body_block %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-10 offset-1">
+        <h2 class="text-center">Click on the link below to download!</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 offset-md-5 col-4 offset-4 pt-3">
+        <a class="btn btn-success" href="{{ path }}">Download</a>
+    </div>
+</div>
+{% endblock %}
