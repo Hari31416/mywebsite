@@ -8,3 +8,4 @@ django-unused-media
 cloudinary 
 django-cloudinary-storage
 whitenoise
+pytube

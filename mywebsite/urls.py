@@ -27,6 +27,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("language/", include("language.urls")),
     path("image/", include("image.urls")),
+    path("youtube/", include("youtube.urls")),
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
 ]
 

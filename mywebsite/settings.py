@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "image",
     "django_cleanup.apps.CleanupConfig",
     "django_unused_media",
+    "youtube",
     # "cloudinary",
     # "cloudinary_storage",
 ]

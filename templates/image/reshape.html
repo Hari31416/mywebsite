@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends "language/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block title_block %}
 <title>Reshape Image</title>
@@ -8,8 +8,8 @@
 
 <div class="row">
     <div class="col-md-6 offset-md-3 offset-1 col-10 g-md-3">
-        <h3 class="my-3 alert alert-success ">Great! Here is your reshaped file!</h3>
-        <h6 class="">Click on the image or on the download button below to download.</h6>
+        <h3 class="my-3 alert alert-success bg-transparent border-0">Great! Here is your reshaped file.</h3>
+        <h5 class="">Click on the image to download.</h5>
         <a href="{{ file_dir }}" target="blank"><img class="my-3 img img-fluid d-block" src="{{ file_dir }}"
                 alt="No Image"></a>
     </div>
@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4 col-6 offset-3 mt-5">
-            <a href="{% url 'image:reshape' %}" class="btn btn-success">Reshape Another
+            <a href="{% url 'image:index' %}" class="btn btn-success">Reshape Another
                 Image</a>
         </div>
     </div>
