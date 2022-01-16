@@ -10,13 +10,15 @@
     <div class="col-md-6 offset-md-3 offset-1 col-10 g-md-3">
         {% if error %}
         <h3 class="my-3 alert alert-danger bg-transparent border-0">Sorry!</h3>
-        <h6 class="my-3 alert alert-danger bg-transparent border-0">{{ err_text }}</h6>
+        {% for text in err_text %}
+        <p class="my-3 alert alert-danger bg-transparent border-0">{{ text }}</p>
+        {% endfor %}
         <h6 class="lead">Meanwhile, you can download this compressed (hopefully) image with
             <span class="text-success"><b>{{ reached_size }}Kb</b></span> of size. Click on the image or on the download
             button below to download.
         </h6>
         {% else %}
-        <h3 class="my-3 alert alert-success  bg-transparent border-0">Great! Here is your compressed file.</h3>
+        <h3 class="my-3 alert alert-success bg-transparent border-0">Great! Here is your compressed file!</h3>
         <h6 class="lead">The size is <span class="text-success"><b>{{ reached_size }}Kb.</b></span> Click on the image
             to download.</h6>
         {% endif %}
