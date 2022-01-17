@@ -169,7 +169,7 @@ class ImageFile(models.Model):
             # Checking if the image size is decreasing or not
             difference = previous_size - current_size
             if difference < 1:
-                error += "Image size is not decreasing.\n Because the quality of the image has reached very low."
+                error += "Image size is not decreasing. Because the quality of the image has reached very low."
                 # print(f"{FINAL_SIZE} KB -> {current_size} KB")
                 # print("No more difference")
                 break
@@ -183,9 +183,7 @@ class ImageFile(models.Model):
 
             # making sure that the quality is at least 5
             if quality < 5:
-                error += (
-                    "Quality has reached very low value (less than 5%). Aborting!\n"
-                )
+                error += "Quality has reached very low value (less than 5%). Aborting!"
                 error += "You should consider reshaping the image first."
                 # print(f"{FINAL_SIZE} KB -> {current_size} KB")
                 # print("Aborting! Quality has reached very low value (less than 5%).")

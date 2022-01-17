@@ -3,7 +3,9 @@ body {
   background-size: 100% auto;
   background-repeat: round;
   background-attachment: fixed;
-  min-height: 720px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .border {
@@ -18,4 +20,17 @@ body {
   font-size: 1.2em;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
+}
+
+#footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 15px 0px 0px 15px;
+  height: 120px;
+  display: block;
+  border-top: 3px solid black;
+}
+
+.social {
+  display: flex;
 }

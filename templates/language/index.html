@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title_block %}
 <title>Language Detector</title>
+<meta property="og:title" content="Language Detector" />
 {% endblock %}
 {% block body_block %}
 <div class="container">
@@ -18,7 +19,7 @@
             <form action="{% url 'language:index' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <textarea class="form-control bg-transparent border" name="text" id="text" cols="30" rows="5"
+                    <textarea class="form-control bg-transparent border" name="text" id="text" cols="30" rows="10"
                         placeholder="{{ text }}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Submit</button>

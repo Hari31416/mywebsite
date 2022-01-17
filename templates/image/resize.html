@@ -3,16 +3,17 @@
 {% load static %}
 {% block title_block %}
 <title>Compressed Image</title>
+<meta property="og:title" content="Compressed Image" />
 {% endblock %}
 {% block body_block %}
 
-<div class="row">
+<div class=" row">
     <div class="col-md-6 offset-md-3 offset-1 col-10 g-md-3">
         {% if error %}
-        <h3 class="my-3 alert alert-danger bg-transparent border-0">Sorry!</h3>
-        {% for text in err_text %}
-        <p class="my-3 alert alert-danger bg-transparent border-0">{{ text }}</p>
-        {% endfor %}
+        <div class="alert alert-danger bg-transparent border-0">
+            <h3>Sorry!</h3>
+            <p>{{ err_text }}</p>
+        </div>
         <h6 class="lead">Meanwhile, you can download this compressed (hopefully) image with
             <span class="text-success"><b>{{ reached_size }}Kb</b></span> of size. Click on the image below to download.
         </h6>
@@ -21,7 +22,6 @@
         <h6 class="lead">The size is <span class="text-success"><b>{{ reached_size }}Kb.</b></span> Click on the image
             to download.</h6>
         {% endif %}
-        <p class="text-mute">You might need to right click and select 'save as' option.</p>
         <a href="{{ file_dir }}" download target="blank"><img class="my-3 img img-fluid d-block" src="{{ file_dir }}"
                 alt="No Image"></a>
     </div>
