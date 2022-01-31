@@ -49,7 +49,15 @@
                         {% for language, probability in languages %}
                         <tr>
                             <td>{{ language }}</td>
-                            <td>{{ probability }}</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        aria-valuenow="{{ probability }}" aria-valuemin="0" aria-valuemax="100"
+                                        style="width:{{ probability }}%;">
+                                        <span class=" sr-only">{{ probability }}%</span>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
