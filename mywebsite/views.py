@@ -69,4 +69,4 @@ def index(request):
             languages_name.append(language_short_name[lang])
         except:
             pass
-    return render(request, "home.html", {"languages": languages_name})
+    return render(request, "home.html", {"languages": ", ".join(languages_name)})

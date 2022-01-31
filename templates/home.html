@@ -17,12 +17,9 @@
                 simple app which uses Python library <a href="https://github.com/Mimino666/langdetect" target="blank"
                     id="link">langdetect</a> to
                 detect what language a given text belongs to. The model is quite accuracte if the sample text is large
-                enough. Currently, supported languages are:
-                <ul>
-                    {% for lang in languages %}
-                    <li>{{ lang }}</li>
-                    {% endfor %}
-                </ul>
+                enough. Currently, supported languages are:<br>
+                <p class="small">[{{ languages }}]</p>
+
             </li>
             <li><strong> <a href="{% url 'image:index' %}" target="blank" id="link">Image Tools</a>:</strong> This app
                 provides

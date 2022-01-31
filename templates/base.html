@@ -31,9 +31,18 @@
         <div class="collapse navbar-collapse px-3" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'language:index' %}">Language Detector</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'image:index' %}">Image Tools</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'youtube:index' %}">YouTube Song Downloader</a>
+                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/hari31416/"
+                        target="blank">About Me</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-expanded="false">
+                        Apps
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item text-light" href="{% url 'language:index' %}">Language Detector</a>
+                        <a class="dropdown-item text-light" href="{% url 'image:index' %}">Image Tools</a>
+                        <a class="dropdown-item text-light" href="{% url 'youtube:index' %}">YouTube Song Downloader</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -58,7 +67,7 @@
                         alt="Twitter" height="35" width="35"></a>
                 <a class="mx-md-1" href="https://www.linkedin.com/in/hari31416/" target="blank"><img
                         src="https://bucketformyfirstwebsite.s3.ap-south-1.amazonaws.com/heroku_01/images/social_images/linkedin.png"
-                        alt="Twitter" height="35" width="35"></a>
+                        alt="LinkedIn" height="35" width="35"></a>
                 <a class="mx-md-1" href="https://goodreads.com/hari31416" target="blank"><img
                         src="https://bucketformyfirstwebsite.s3.ap-south-1.amazonaws.com/heroku_01/images/social_images/goodreads.png"
                         alt="Goodreads" height="35" width="35"></a>

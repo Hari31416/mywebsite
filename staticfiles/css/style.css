@@ -34,3 +34,11 @@ body {
 .social {
   display: flex;
 }
+
+.dropdown-menu > a:hover {
+  background-color: rgb(18, 18, 19);
+}
+
+.dropdown-menu {
+  border: none;
+}
