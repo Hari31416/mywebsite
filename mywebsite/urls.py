@@ -28,6 +28,7 @@ urlpatterns = [
     path("language/", include("language.urls")),
     path("image/", include("image.urls")),
     path("youtube/", include("youtube.urls")),
+    path("models/", include("models.urls")),
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
 ]
 

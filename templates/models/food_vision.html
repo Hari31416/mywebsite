@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% load static %} {% block title_block %}
+<title>Food Vision</title>
+<meta property="og:title" content="Food Vision" />
+{% endblock %} {% block body_block %}
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-10 offset-1">
+
+        {% if not saved %}
+        <h2>Food Vision</h2>
+        <h4 class="mb-4">Start by uploading the image.</h4>
+        <form action="{% url 'models:food_vision' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <p>
+                    <label for="img_file">Upload Image</label>
+                    <input type="file" name="img_file" class="form-control-file" id="img_file" accept="image/*"
+                        required="" />
+                </p>
+                <input id="upload-btn" type="submit" value="Upload" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+{% if error_text %}
+<div class="row">
+    <div class="alert alert-danger col-md-8 offset-md-2 col-10 offset-1 mt-2">
+        <strong>Sorry!</strong> {{ error_text }}
+    </div>
+    {% else %}
+
+    {% endif %}
+    {% else %}
+    <div class="row">
+        <div class="alert alert-success col-md-8 offset-md-2 col-10 offset-1 bg-transparent border-0">
+            <h3 class="pb-2" style="color: black;">Here is the image you uploaded.</h3>
+            <img class="img img-fluid" src=" {{ img_url }}" alt="">
+
+            <h3 class="pt-3">Here are top five classes</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Probability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for class, probability in results %}
+                    <tr>
+                        <td>{{ class }}</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                    aria-valuenow="{{ probability }}" aria-valuemin="0" aria-valuemax="100"
+                                    style="width:{{ probability }}%;">
+                                    <span class="text-center sr-only">{{ probability }}%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>{{ classes }}</p>
+            <p>{{ preds }}</p>
+
+        </div>
+        <div class="col-md-2 offset-md-5 col-4 offset-4 pt-3">
+            <a class="btn btn-primary" href="{% url 'models:food_vision' %}">Try Another</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %} {% block js_block %} {% endblock %}

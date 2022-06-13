@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% block title_block %}
+<title>ML Models</title>
+<meta property="og:title" content="ML Models" />
+{% endblock %} {% block body_block %}
+<div class="row">
+  <div class="col-md-8 offset-md-2 col-10 offset-1">
+    <h2>ML Models</h2>
+    <p class="lead">The page contains some of the machine laerning and deep learning models. Currently available models
+      are:</p>
+    <ul>
+      <li>
+        <a href="{% url 'models:food_vision' %}"> <strong>Food Vision</strong></a>
+        <p>
+          This model is trained to predict the type of food it is, given a picture of it. The model was trained on 101
+          classes of foods and got test accuracy of over 80%.
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %} {% block js_block %} {% endblock %}

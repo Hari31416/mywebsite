@@ -45,17 +45,9 @@ INSTALLED_APPS = [
     "django_cleanup.apps.CleanupConfig",
     "django_unused_media",
     "youtube",
-    # "cloudinary",
-    # "cloudinary_storage",
+    "models",
 ]
 
-# CLOUDINARY_STORAGE = {
-#     "CLOUD_NAME": "dimmmylex",
-#     "API_KEY": "395664942538496",
-#     "API_SECRET": "oiU1Wr9D6P1eqzIbQmqTXxvgSsA",
-# }
-
-# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
