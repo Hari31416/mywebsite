@@ -8,4 +8,4 @@ django-unused-media
 cloudinary 
 django-cloudinary-storage
 whitenoise
-pytube
+pytube==12.1.0
