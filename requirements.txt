@@ -9,5 +9,5 @@ cloudinary
 django-cloudinary-storage
 whitenoise
 pytube==12.1.0
-tensorflow-cpu==2.8.0
+tensorflow-cpu==2.8.1
 protobuf~=3.19.0
