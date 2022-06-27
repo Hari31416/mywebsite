@@ -149,6 +149,10 @@ class ImageFile(models.Model):
         image = tf.image.resize(image, [image_shape, image_shape])
         if image.shape[2] == 4:
             image = image[:, :, :3]
+        if image.numpy().max() > 1:
+            pass
+        else:
+            image = image * 255
         image = tf.cast(image, tf.float32)
         image = tf.expand_dims(image, 0)
         return image
