@@ -147,6 +147,8 @@ class ImageFile(models.Model):
         image = Image.open(self.img_file)
         image = tf.keras.preprocessing.image.img_to_array(image)
         image = tf.image.resize(image, [image_shape, image_shape])
+        if image.shape[2] == 4:
+            image = image[:, :, :3]
         image = tf.cast(image, tf.float32)
         image = tf.expand_dims(image, 0)
         return image
