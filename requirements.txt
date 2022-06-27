@@ -10,3 +10,4 @@ django-cloudinary-storage
 whitenoise
 pytube==12.1.0
 tensorflow==2.8.0
+protobuf~=3.19.0
