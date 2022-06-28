@@ -1,0 +1,20 @@
+name: herkou-website
+
+dependencies:
+  - python=3.9
+  - pip
+  - tensorflow
+  - keras
+  - pip:
+      - django
+      - django-heroku
+      - langdetect
+      - gunicorn
+      - pillow
+      - django-cleanup
+      - django-unused-media
+      - cloudinary
+      - django-cloudinary-storage
+      - whitenoise
+      - pytube==12.1.0
+      - protobuf~=3.19.0
