@@ -27,7 +27,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 SECRET_KEY = "django-insecure-=u#u^#(r-mebpon=2gztystb9+c-!v(bb((5^^op9_4mw+@!on"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "language",
     "image",
-    "django_cleanup.apps.CleanupConfig",
-    "django_unused_media",
     "youtube",
     "models",
 ]
