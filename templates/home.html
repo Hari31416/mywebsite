@@ -1,55 +1,104 @@
-<!DOCTYPE html>
-{% extends "base.html" %}
-{% block title_block %}
+{% extends "base.html" %} {% block title_block %}
 <title>Site Home</title>
 <meta property="og:title" content="Site Home" />
-{% endblock %}
-{% block body_block %}
+{% endblock %} {% block body_block %}
 <div class="row">
-    <div class="col-md-8 offset-md-2 col-10 offset-1">
-        <h2>Welcome to the homepage!</h2>
-        <div class="lead">Here, you'll find details about some apps available on this webpage. But of course, you are
-            welcome to explore on your own. To get a list of apps, see the navigation bar.</div>
-        <h3 class="mt-3">Available apps are:</h3>
-        <ol>
-            <li><strong> <a href="{% url 'language:index' %}" target="blank" id="link"> Language
-                        Detector</a>:</strong> This is a
-                simple app which uses Python library <a href="https://github.com/Mimino666/langdetect" target="blank"
-                    id="link">langdetect</a> to
-                detect what language a given text belongs to. The model is quite accuracte if the sample text is large
-                enough. Currently, supported languages are:<br>
-                <p class="small">[{{ languages }}]</p>
-
-            </li>
-            <li><strong> <a href="{% url 'image:index' %}" target="blank" id="link">Image Tools</a>:</strong> This app
-                provides
-                some basic functionalities for JPG and PNG images, like compression, resizing, and converting format.
-                Under the hood, the app uses the <a href="https://github.com/python-pillow/Pillow" target="blank"
-                    id="link">Pillow</a> library.
-            </li>
-            <li><strong> <a href="{% url 'youtube:index' %}" target="blank" id="link">Youtube Song
-                        Downloader</a>:</strong> As the name suggests, this app downloads song from YouTube using its
-                URL. The app gives options to download the audio file with various qualities, in terms of <a
-                    href="https://en.wikipedia.org/wiki/Bit_rate" target="blank" id='link'>kilo bits per
-                    second</a>. I use another library <a href="https://github.com/pytube/pytube" target="blank"
-                    id="link">pytube</a> in the back-end.</li>
-            <li><strong> <a href="{% url 'models:index' %}" target="blank" id="link">Machine Learning
-                        Models</a>:</strong> This app contains some of the machine learning and deep learning models.
-            </li>
-        </ol>
-        <h3 class="mt-3">What Next?</h3>
-        <p class="lead">I do have some ideas, which, given time, may result in more apps. Here are some of those ideas:
-        </p>
-        <ol>
-            <li>Make an app similar to the third one but for spotify.</li>
-            <li>Make a file conversion app which supports at least some most common file formats for images, document
-                and ebooks.</li>
-            <li><del>Make an app able to predict which type of food it is, given a picture of it.</del>
-            </li>
-            <li>Make an app similar to the previous one but for flowers and animals.</li>
-        </ol>
-        <p>And much more... <br>Let's see what happens! &#128516;</p>
+  <div class="col-md-8 offset-md-2 col-10 offset-1">
+    <h2>Welcome to the homepage!</h2>
+    <div class="lead">
+      Here, you'll find details about some apps available on this webpage. But
+      of course, you are welcome to explore on your own. To get a list of apps,
+      see the navigation bar.
     </div>
+    <h3 class="mt-3">Available apps are:</h3>
+    <ol>
+      <li>
+        <strong>
+          <a href="{% url 'language:index' %}" target="blank" id="link">
+            Language Detector</a
+          >:</strong
+        >
+        This is a simple app which uses Python library
+        <a
+          href="https://github.com/Mimino666/langdetect"
+          target="blank"
+          id="link"
+          >langdetect</a
+        >
+        to detect what language a given text belongs to. The model is quite
+        accuracte if the sample text is large enough. Currently, supported
+        languages are:<br />
+        <p class="small">[{{ languages }}]</p>
+      </li>
+      <li>
+        <strong>
+          <a href="{% url 'image:index' %}" target="blank" id="link"
+            >Image Tools</a
+          >:</strong
+        >
+        This app provides some basic functionalities for JPG and PNG images,
+        like compression, resizing, and converting format. Under the hood, the
+        app uses the
+        <a
+          href="https://github.com/python-pillow/Pillow"
+          target="blank"
+          id="link"
+          >Pillow</a
+        >
+        library.
+      </li>
+      <li>
+        <strong>
+          <a href="{% url 'youtube:index' %}" target="blank" id="link"
+            >Youtube Song Downloader</a
+          >:</strong
+        >
+        As the name suggests, this app downloads song from YouTube using its
+        URL. The app gives options to download the audio file with various
+        qualities, in terms of
+        <a
+          href="https://en.wikipedia.org/wiki/Bit_rate"
+          target="blank"
+          id="link"
+          >kilo bits per second</a
+        >. I use another library
+        <a href="https://github.com/pytube/pytube" target="blank" id="link"
+          >pytube</a
+        >
+        in the back-end.
+      </li>
+      <li>
+        <strong>
+          <a href="{% url 'models:index' %}" target="blank" id="link"
+            >Machine Learning Models</a
+          >:</strong
+        >
+        This app contains some of the machine learning and deep learning models.
+      </li>
+    </ol>
+    <h3 class="mt-3">What Next?</h3>
+    <p class="lead">
+      I do have some ideas, which, given time, may result in more apps. Here are
+      some of those ideas:
+    </p>
+    <ol>
+      <li>Make an app similar to the third one but for spotify.</li>
+      <li>
+        Make a file conversion app which supports at least some most common file
+        formats for images, document and ebooks.
+      </li>
+      <li>
+        <del
+          >Make an app able to predict which type of food it is, given a picture
+          of it.</del
+        >
+      </li>
+      <li>
+        Make an app similar to the previous one but for flowers and animals.
+      </li>
+    </ol>
+    <p>And much more... <br />Let's see what happens! &#128516;</p>
+  </div>
 </div>
 
 {% endblock %}
